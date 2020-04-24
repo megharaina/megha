@@ -12,25 +12,26 @@ import com.spoc.service.SpocService;
 public class SpocController {
 	@Autowired
 	private SpocService spocService;
-	@RequestMapping("/")
-	public String home() 
-	{
-		return "welcomepage";
-	}
+	/*
+	 * @RequestMapping("/") public String home() { return "welcomepage"; }
+	 */
+	
 	/*
 	 * @RequestMapping("/status") public String getStatus() {
 	 * spocService.getStatus(); return "welcomepage"; }
 	 */
-	@RequestMapping("/show")
+	 
+	@RequestMapping("/")
 	public String showAllList(HttpServletRequest request) 
 	{
-		request.setAttribute("request",spocService.showAllList());
-		
+		request.setAttribute("requests",spocService.showAllUsers());
+		request.setAttribute("trainer", spocService.showTrainerList());
+		request.setAttribute("techno", spocService.showTechnologyList());
+		request.setAttribute("vertical", spocService.showVerticalList());
 		return "welcomepage";
 	}
+	
+	
+	
 		
 }
-
-/*
- * req.setAttribute("requests",spocService.findAllRequests()); return "index";
- */

@@ -1,5 +1,13 @@
+<%@page import="com.spoc.entity.Vertical"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@page import="com.spoc.entity.Trainer" %>
+    <%@page import="com.spoc.entity.Training_Request" %>
+    <%@page import="com.spoc.entity.Technology" %>
+     <%@page import="com.spoc.entity.Vertical" %>
+    
+     <%@page import="java.util.List" %>
+     <%@page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,262 +21,73 @@
 
     <div class="row-container">
 		<h1>Pending Requests</h1>
-		<%-- <c:forEach var="request" items="${requests}"> --%>
+		<%-- <c:set var="i" value="1" />
+		 <c:forEach var="request" items="${requests}"> --%>
+		 <%
+		 List<Training_Request> users = new ArrayList<Training_Request>();
+		 users=(List<Training_Request>)request.getAttribute("requests");
+		
+		 int i=0;
+		 for(i=0; i<users.size();i++)
+		 {
+		 %>
 		<div class="row border-round">
 			<div class="row-content">
 				<table class="table">
                     <tbody>
-                    <td>${request}</td>
-                       <%--  <tr>
-                            <td>Id:${request.request_id}</td>
+                    <tr>
+                        <td>Id:<%=users.get(i).getRequestId() %></td>
                         </tr>
                         <tr>
-                            <td>Domain:${request.vertical_id}</td>
+                         <td>Domain:<%=users.get(i).getTechnologyName() %></td>
                         </tr>
                         <tr>
-                            <td>Technology:${request.technology_id}</td>
-                        </tr> --%>
-                        <tr><td><input type=button value="Assign Trainer"></td></tr>
-                    </tbody>
-                </table>
-			</div>
-		</div>
-		<!-- </c:forEach> -->
-		<div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
+                         <td>Technology:<%=users.get(i).getVerticalName() %></td>
                         </tr>
                         <tr>
-                            <td>Technology: JavaScript</td>
-                        </tr>
-                        <tr>
-                            <td>Domain: HealthCare</td>
-                        </tr>
-                        <tr><td><input type=button value="Assign Trainer"></td></tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Technology: JavaScript</td>
-                        </tr>
-                        <tr>
-                            <td>Domain: HealthCare</td>
-                        </tr>
-                        <tr><td><input type=button value="Assign Trainer"></td></tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Technology: JavaScript</td>
-                        </tr>
-                        <tr>
-                            <td>Domain: HealthCare</td>
-                        </tr>
-                        <tr><td><input type=button value="Assign Trainer"></td></tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Technology: JavaScript</td>
-                        </tr>
-                        <tr>
-                            <td>Domain: HealthCare</td>
-                        </tr>
-                        <tr><td><input type=button value="Assign Trainer"></td></tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Technology: JavaScript</td>
-                        </tr>
-                        <tr>
-                            <td>Domain: HealthCare</td>
-                        </tr>
-                        <tr><td><input type=button value="Assign Trainer"></td></tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Technology: JavaScript</td>
-                        </tr>
-                        <tr>
-                            <td>Domain: HealthCare</td>
+                        <td>Status:<%=users.get(i).getRequestStatus() %></td>
                         </tr>
                         <tr><td><input type=button value="Assign Trainer"></td></tr>
                     </tbody>
                 </table>
 			</div>
 		</div>
-    </div>
-   
-
-    <div class="row-container">
+		<%} %>
 		<h1>Available Trainers</h1>
+		<%
+		 List<Trainer> trainer = new ArrayList<Trainer>();
+		 trainer=(List<Trainer>)request.getAttribute("trainer");
+		 List<Technology> techno=new ArrayList<Technology>();
+		 techno=(List<Technology>)request.getAttribute("techno");
+		 List<Vertical> vertical=new ArrayList<Vertical>();
+		 vertical=(List<Vertical>)request.getAttribute("vertical");
+		 
+		 int j=0;
+		 int k=0;			 
+		 	for(j=0; j<trainer.size();j++)
+		 	{
+			 if((trainer.get(j).getTechnologyId()==techno.get(k).getTechnologyId()))
+			 {
+				 
+		 %>
 		<div class="row border-round">
 			<div class="row-content">
 				<table class="table">
                     <tbody>
-                        <tr>
-                            <td>Id:1</td>
+                        <tr><td>Id:<%=trainer.get(j).getTrainerId() %></td>
                         </tr>
-                        <tr>
-                            <td>Technology: JavaScript</td>
+                        <tr><td>Trainer Name:<%=trainer.get(j).getTrainerName() %></td>
                         </tr>
-                        <tr>
-                            <td>Domain: HealthCare</td>
+                        <tr><td>Technology Name:<%=techno.get(k).getTechnologyName() %></td>
+                        </tr>
+                        <tr><td>Vertical Name:<%=vertical.get(j).getVerticalName() %> </td>
                         </tr>
                     </tbody>
                 </table>
 			</div>
 		</div>
-		<div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Technology: JavaScript</td>
-                        </tr>
-                        <tr>
-                            <td>Domain: HealthCare</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Technology: JavaScript</td>
-                        </tr>
-                        <tr>
-                            <td>Domain: HealthCare</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Technology: JavaScript</td>
-                        </tr>
-                        <tr>
-                            <td>Domain: HealthCare</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Technology: JavaScript</td>
-                        </tr>
-                        <tr>
-                            <td>Domain: HealthCare</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Technology: JavaScript</td>
-                        </tr>
-                        <tr>
-                            <td>Domain: HealthCare</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Technology: JavaScript</td>
-                        </tr>
-                        <tr>
-                            <td>Domain: HealthCare</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
-		</div>
-    </div>
-
-    <div class="row-container">
+		<%}k++;}%>  
+   
 		<h1>Available Rooms</h1>
 		<div class="row border-round">
 			<div class="row-content">
@@ -493,6 +312,6 @@
 			</div>
 		</div>
 		
-	</div>
+	</div> -->
 </body>
 </html>

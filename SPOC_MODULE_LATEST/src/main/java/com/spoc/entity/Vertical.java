@@ -8,27 +8,28 @@ import javax.persistence.Table;
 public class Vertical {
 
 	@Id
-	private int vertical_id;
-	private String vertical_name;
+	private int verticalId;
+	private String verticalName;
 	public Vertical() {
-		
-	}
-	public Vertical(int vertical_id, String vertical_name) {
 		super();
-		this.vertical_id = vertical_id;
-		this.vertical_name = vertical_name;
+		// TODO Auto-generated constructor stub
 	}
-	public int getVertical_id() {
-		return vertical_id;
+	public Vertical(int verticalId, String verticalName) {
+		super();
+		this.verticalId = verticalId;
+		this.verticalName = verticalName;
 	}
-	public void setVertical_id(int vertical_id) {
-		this.vertical_id = vertical_id;
+	public int getVerticalId() {
+		return verticalId;
 	}
-	public String getVertical_name() {
-		return vertical_name;
+	public void setVerticalId(int verticalId) {
+		this.verticalId = verticalId;
 	}
-	public void setVertical_name(String vertical_name) {
-		this.vertical_name = vertical_name;
+	public String getVerticalName() {
+		return verticalName;
+	}
+	public void setVerticalName(String verticalName) {
+		this.verticalName = verticalName;
 	}
 	
 }

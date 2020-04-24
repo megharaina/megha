@@ -8,34 +8,34 @@ import javax.persistence.Table;
 public class Technology {
 	
 	@Id
-	private int technology_id;
-	private String technology_name;
+	private int technologyId;
+	private String technologyName;
 
 	public Technology() {
 	
 	}
 
-	public int getTechnology_id() {
-		return technology_id;
+	public int getTechnologyId() {
+		return technologyId;
 	}
 
-	public void setTechnology_id(int technology_id) {
-		this.technology_id = technology_id;
+	public void setTechnologyId(int technologyId) {
+		this.technologyId = technologyId;
 	}
 
-	public String getTechnology_name() {
-		return technology_name;
+	public String getTechnologyName() {
+		return technologyName;
 	}
 
-	public void setTechnology_name(String technology_name) {
-		this.technology_name = technology_name;
+	public void setTechnologyName(String technologyName) {
+		this.technologyName = technologyName;
 	}
 
-	public Technology(int technology_id, String technology_name) {
-		super();
-		this.technology_id = technology_id;
-		this.technology_name = technology_name;
+	@Override
+	public String toString() {
+		return "Technology [technologyId=" + technologyId + ", technologyName=" + technologyName + "]";
 	}
 
+	
 }
 

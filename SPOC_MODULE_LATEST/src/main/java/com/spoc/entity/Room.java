@@ -6,37 +6,35 @@ import javax.persistence.Table;
 @Table(name="room")
 public class Room {
 		@Id
-		private int room_id;
-		private boolean room_status;
-		private String date;
-		public Room() {
-			
-		}
-		public Room(int room_id, boolean room_status, String date) {
+		private int roomId;
+		private int roomNumber;
+		private boolean roomStatus;
+		public Room(int roomId, int roomNumber, boolean roomStatus) {
 			super();
-			this.room_id = room_id;
-			this.room_status = room_status;
-			this.date = date;
+			this.roomId = roomId;
+			this.roomNumber = roomNumber;
+			this.roomStatus = roomStatus;
 		}
-		public int getRoom_id() {
-			return room_id;
+		public int getRoomId() {
+			return roomId;
 		}
-		public void setRoom_id(int room_id) {
-			this.room_id = room_id;
+		public void setRoomId(int roomId) {
+			this.roomId = roomId;
 		}
-		public boolean isRoom_status() {
-			return room_status;
+		public int getRoomNumber() {
+			return roomNumber;
 		}
-		public void setRoom_status(boolean room_status) {
-			this.room_status = room_status;
+		public void setRoomNumber(int roomNumber) {
+			this.roomNumber = roomNumber;
 		}
-		public String getDate() {
-			return date;
+		public boolean isRoomStatus() {
+			return roomStatus;
 		}
-		public void setDate(String date) {
-			this.date = date;
+		public void setRoomStatus(boolean roomStatus) {
+			this.roomStatus = roomStatus;
 		}
 		
 		
 		
+	
 }

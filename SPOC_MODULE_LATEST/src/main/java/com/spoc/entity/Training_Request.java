@@ -8,34 +8,37 @@ import javax.persistence.Table;
 public class Training_Request {
 	@Id
 	private int requestId;
-	private int verticalId;
-	private int technologyId;
-	public Training_Request() {
-		
-	}
+	private String verticalName;
+	private String technologyName;
+	private int requestStatus;
 	public int getRequestId() {
 		return requestId;
 	}
 	public void setRequestId(int requestId) {
 		this.requestId = requestId;
 	}
-	public int getVerticalId() {
-		return verticalId;
+	public String getVerticalName() {
+		return verticalName;
 	}
-	public void setVerticalId(int verticalId) {
-		this.verticalId = verticalId;
+	public void setVerticalName(String verticalName) {
+		this.verticalName = verticalName;
 	}
-	public int getTechnologyId() {
-		return technologyId;
+	public String getTechnologyName() {
+		return technologyName;
 	}
-	public void setTechnologyId(int technologyId) {
-		this.technologyId = technologyId;
+	public void setTechnologyName(String technologyName) {
+		this.technologyName = technologyName;
 	}
-	
-	 @Override public String toString() { 
-		 return "Training_Request [requestId=" +
-	 requestId + ", verticalId=" + verticalId + ", technologyId=" + technologyId +
-	 "]"; }
-	 
+	public int getRequestStatus() {
+		return requestStatus;
+	}
+	public void setRequestStatus(int requestStatus) {
+		this.requestStatus = requestStatus;
+	}
+	@Override
+	public String toString() {
+		return "Training_Request [requestId=" + requestId + ", verticalName=" + verticalName + ", technologyName="
+				+ technologyName + ", requestStatus=" + requestStatus + "]";
+	}
 	
 }

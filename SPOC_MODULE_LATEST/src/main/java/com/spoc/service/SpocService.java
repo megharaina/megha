@@ -8,8 +8,15 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+import com.spoc.entity.Technology;
+import com.spoc.entity.Trainer;
 import com.spoc.entity.Training_Request;
+import com.spoc.entity.Vertical;
 import com.spoc.repository.SpocRepository;
+import com.spoc.repository.TechnologyRepository;
+import com.spoc.repository.TrainerRepository;
+import com.spoc.repository.VerticalRepository;
 
 
 @Service
@@ -24,26 +31,69 @@ public class SpocService
 	@Autowired
 	private final SpocRepository spocRepository;
 	
+	@Autowired
+	private final TechnologyRepository technoRepo;
 	
-	public SpocService(SpocRepository spocRepository) {
+	@Autowired
+	private final VerticalRepository verticalRepo;
+	
+	@Autowired
+	private final TrainerRepository trainerRepo;
+	
+	public SpocService(SpocRepository spocRepository,TechnologyRepository technoRepo,VerticalRepository verticalRepo,TrainerRepository trainerRepo) {
 		super();
 		this.spocRepository = spocRepository;
+		this.technoRepo=technoRepo;
+		this.verticalRepo=verticalRepo;
+		this.trainerRepo=trainerRepo;
 	}
 
+	
 	/*
-	 * public Collection<Training_Request> findAllRequests(){ List<Training_Request>
-	 * requests = new ArrayList<>(); Iterable<Training_Request> requestList =
-	 * spocRepository.findAll(); requestList.forEach(requests::add); return
-	 * requests; }
+	 * public Collection<Training_Request> findAllRequests() {
+	 * List<Training_Request> requests = new ArrayList<>();
+	 * Iterable<Training_Request> requestList = spocRepository.findAll();
+	 * requestList.forEach(requests::add); return requests; }
 	 */
 	
-	
-		public List<Training_Request> showAllList() {
-			List<Training_Request> list = new ArrayList<Training_Request>();
-			list = spocRepository.findByRequestId(101);
-			System.out.println(list);
-			return spocRepository.findByRequestId(101);
+	public List<Training_Request> showAllUsers(){
+		List<Training_Request> users = new ArrayList<Training_Request>();
+		for(Training_Request user:spocRepository.findAll()){
+			users.add(user);
+			
 		}
-	 
-   
+		return users;
+	}
+	public List<Trainer> showTrainerList(){
+		List<Trainer> trainer= new ArrayList<Trainer>();
+		for(Trainer t:trainerRepo.findAll()) {
+			trainer.add(t);
+		}
+		return trainer;
+		
+	}
+	public List<Technology> showTechnologyList(){
+		List<Technology> tech = new ArrayList<Technology>();
+		for(Technology technology:technoRepo.findAll()) {
+			tech.add(technology);
+		}		
+		return tech;
+	}
+	public List<Vertical> showVerticalList(){
+		List<Vertical> vertical=new ArrayList<Vertical>();
+		for(Vertical v:verticalRepo.findAll()) {
+			vertical.add(v);
+		}
+		return vertical;
+	}
+	/*
+	 * public List<Technology> showTechnologyList() { List<Technology> list = new
+	 * ArrayList<Technology>(); list = technoRepo.findByTechnologyId(301);
+	 * System.out.println(list); return list; }
+	 * 
+	 * public List<Vertical> showVerticalList(){ List<Vertical> list= new
+	 * ArrayList<Vertical>(); list = verticalRepo.findByVerticalId(201);
+	 * System.out.println(list); return list; }
+	 */
+	
 }
