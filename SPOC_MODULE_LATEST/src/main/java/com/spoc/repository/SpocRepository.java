@@ -9,6 +9,6 @@ import com.spoc.entity.Training_Request;
 public interface SpocRepository extends CrudRepository<Training_Request,Integer>{
 
 	
-	public List<Training_Request> findByRequestId(int id);
+	
 }
 

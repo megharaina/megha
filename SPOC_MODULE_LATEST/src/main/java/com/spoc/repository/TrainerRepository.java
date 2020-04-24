@@ -11,5 +11,5 @@ import com.spoc.entity.Trainer;
 public interface TrainerRepository extends CrudRepository<Trainer,Integer>{
 
 	
-	public List<Trainer> findByTrainerId(int id);
+	
 }

@@ -7,25 +7,19 @@ import javax.persistence.Table;
 public class Room {
 		@Id
 		private int roomId;
-		private int roomNumber;
+		private int roomNo;
 		private boolean roomStatus;
-		public Room(int roomId, int roomNumber, boolean roomStatus) {
-			super();
-			this.roomId = roomId;
-			this.roomNumber = roomNumber;
-			this.roomStatus = roomStatus;
-		}
 		public int getRoomId() {
 			return roomId;
 		}
 		public void setRoomId(int roomId) {
 			this.roomId = roomId;
 		}
-		public int getRoomNumber() {
-			return roomNumber;
+		public int getRoomNo() {
+			return roomNo;
 		}
-		public void setRoomNumber(int roomNumber) {
-			this.roomNumber = roomNumber;
+		public void setRoomNo(int roomNo) {
+			this.roomNo = roomNo;
 		}
 		public boolean isRoomStatus() {
 			return roomStatus;
@@ -33,6 +27,11 @@ public class Room {
 		public void setRoomStatus(boolean roomStatus) {
 			this.roomStatus = roomStatus;
 		}
+		@Override
+		public String toString() {
+			return "Room [roomId=" + roomId + ", roomNo=" + roomNo + ", roomStatus=" + roomStatus + "]";
+		}
+		
 		
 		
 		

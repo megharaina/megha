@@ -28,6 +28,7 @@ public class SpocController {
 		request.setAttribute("trainer", spocService.showTrainerList());
 		request.setAttribute("techno", spocService.showTechnologyList());
 		request.setAttribute("vertical", spocService.showVerticalList());
+		request.setAttribute("room", spocService.showRoomList());
 		return "welcomepage";
 	}
 	

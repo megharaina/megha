@@ -5,6 +5,7 @@
     <%@page import="com.spoc.entity.Training_Request" %>
     <%@page import="com.spoc.entity.Technology" %>
      <%@page import="com.spoc.entity.Vertical" %>
+     <%@page import="com.spoc.entity.Room" %>
     
      <%@page import="java.util.List" %>
      <%@page import="java.util.ArrayList" %>
@@ -45,7 +46,18 @@
                          <td>Technology:<%=users.get(i).getVerticalName() %></td>
                         </tr>
                         <tr>
-                        <td>Status:<%=users.get(i).getRequestStatus() %></td>
+                        <td>Status:<%if(users.get(i).getRequestStatus()==0)
+                        			{
+                        				%>
+                        				Available.
+                        				<% 
+                        			}
+                        else
+                        {%>
+                        	Not Available
+                       <%  }
+                        			%>
+                        </td>
                         </tr>
                         <tr><td><input type=button value="Assign Trainer"></td></tr>
                     </tbody>
@@ -88,230 +100,66 @@
 		</div>
 		<%}k++;}%>  
    
-		<h1>Available Rooms</h1>
+		<h1>Rooms Availability</h1>
+		<% 
+		List<Room> room = new ArrayList<Room>();
+		room=(List<Room>)request.getAttribute("room");
+		System.out.println(room);
+		int h;
+		for(h=0;h<room.size();h++){
+			
+				
+		%>
 		<div class="row border-round">
 			<div class="row-content">
 				<table class="table">
                     <tbody>
                         <tr>
-                            <td>Id:1</td>
+                            <td>Room Number:<%=room.get(h).getRoomNo() %></td>
                         </tr>
                         <tr>
-                            <td>Status: Available</td>
+                            <td>Status:<%if(room.get(h).isRoomStatus())
+                            {
+                				%>
+                				Available.
+                				<% 
+                			}
+                else
+                {%>
+                	Not Available
+               <%  }
+                			%>
                         </tr>
-                        <tr>
-                            <td>Date</td>
-                        </tr>
+                      
                     </tbody>
                 </table>
 			</div>
 		</div>
-		<div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Status: Available</td>
-                        </tr>
-                        <tr>
-                            <td>Date</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Status: Available</td>
-                        </tr>
-                        <tr>
-                            <td>Date</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Status: Available</td>
-                        </tr>
-                        <tr>
-                            <td>Date</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Status: Available</td>
-                        </tr>
-                        <tr>
-                            <td>Date</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Status: Available</td>
-                        </tr>
-                        <tr>
-                            <td>Date</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Status: Available</td>
-                        </tr>
-                        <tr>
-                            <td>Date</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
-		</div>
-    </div>
+		<%} %>
+ 
 
-    <div class="row-container">
+    
 		<h1>Verticals</h1>
+		<%
+		int m;
+		for(m=0;m<vertical.size();m++){
+			
+		%>		
 		<div class="row border-round">
 			<div class="row-content">
 				<table class="table">
                     <tbody>
                         <tr>
-                            <td>Id:1</td>
+                            <td>Id:<%=vertical.get(m).getVerticalId()%></td>
                         </tr>
                         <tr>
-                            <td>Technology: JavaScript</td>
+                            <td>Technology Name:<%=techno.get(m).getTechnologyName()%></td>
                         </tr>
                     </tbody>
                 </table>
 			</div>
 		</div>
-		<div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Technology: JavaScript</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Technology: JavaScript</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Technology: JavaScript</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Technology: JavaScript</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Technology: JavaScript</td>
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
-        </div>
-        <div class="row border-round">
-			<div class="row-content">
-				<table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Id:1</td>
-                        </tr>
-                        <tr>
-                            <td>Technology: JavaScript</td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-			</div>
-		</div>
+		<%} %>
 		
-	</div> -->
 </body>
 </html>

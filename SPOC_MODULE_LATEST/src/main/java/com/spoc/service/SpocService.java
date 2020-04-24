@@ -8,11 +8,12 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.spoc.entity.Room;
 import com.spoc.entity.Technology;
 import com.spoc.entity.Trainer;
 import com.spoc.entity.Training_Request;
 import com.spoc.entity.Vertical;
+import com.spoc.repository.RoomRepository;
 import com.spoc.repository.SpocRepository;
 import com.spoc.repository.TechnologyRepository;
 import com.spoc.repository.TrainerRepository;
@@ -40,12 +41,16 @@ public class SpocService
 	@Autowired
 	private final TrainerRepository trainerRepo;
 	
-	public SpocService(SpocRepository spocRepository,TechnologyRepository technoRepo,VerticalRepository verticalRepo,TrainerRepository trainerRepo) {
+	@Autowired
+	private final RoomRepository roomRepo;
+	
+	public SpocService(SpocRepository spocRepository,TechnologyRepository technoRepo,VerticalRepository verticalRepo,TrainerRepository trainerRepo,RoomRepository roomRepo) {
 		super();
 		this.spocRepository = spocRepository;
 		this.technoRepo=technoRepo;
 		this.verticalRepo=verticalRepo;
 		this.trainerRepo=trainerRepo;
+		this.roomRepo=roomRepo;
 	}
 
 	
@@ -86,6 +91,15 @@ public class SpocService
 		}
 		return vertical;
 	}
+	public List<Room> showRoomList(){
+		List<Room> room=new ArrayList<Room>();
+		for(Room r:roomRepo.findAll()) {
+			room.add(r);
+		}
+		System.out.println(room);
+		return room;
+	}
+	
 	/*
 	 * public List<Technology> showTechnologyList() { List<Technology> list = new
 	 * ArrayList<Technology>(); list = technoRepo.findByTechnologyId(301);

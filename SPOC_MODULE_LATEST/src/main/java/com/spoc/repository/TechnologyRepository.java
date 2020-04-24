@@ -10,6 +10,6 @@ import com.spoc.entity.Training_Request;
 public interface TechnologyRepository extends CrudRepository<Technology,Integer>{
 
 	
-	public List<Technology> findByTechnologyId(int id);
+	
 	
 }
